@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function comparison(a, b) {
+        if (!Number.isNaN(a) && !Number.isNaN(b)) {
+            if (a < b) {
+                return -1;
+            }
+            if (a > b) {
+                return 1;
+            }
+            if (a === b) {
+                return 0;
+            }
+        } else {
+            console.log("Введите число !!!")
+        }
+    }
+
+
+    function factorial(num) {
+        let fact = 1;
+        if (!Number.isNaN(num)) {
+            for (let i = 1; i <= num; i++) {
+                fact *= i;
+            }
+            return fact;
+        }
+    }
+
+    function concatenation(num1, num2, num3) {
+        let a = String(num1);
+        let b = String(num2);
+        let c = String(num3)
+        return a + b + c;
+    }
+
+    function area(num1, num2) {
+        if (!Number.isNaN(num1) && !Number.isNaN(num2) && num2 !== undefined) {
+            return num1 * num2;
+        }
+        if (!Number.isNaN(num1) && num2 === undefined) {
+            return num1 * num1;
+        }
+    }
+
+
+    function perfectNumber(num) {
+        let b = 0;
+        for (let i = 2; b < num; i++) {
+            let bool = true;
+            for (j = 2; j * j <= i; j++) {
+                if (i % j === 0)
+                    bool = false;
+            }
+            if (b === num) {
+                break;
+            }
+            if (bool) {
+                b = Math.pow(2, (i - 1)) * (Math.pow(2, i) - 1);
+            }
+        }
+        if (b === num) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+
+    function rangePerfectNumber(num1, num2) {
+        for (let i = num1; i <= num2; i++) {
+            let a = perfectnumber(i);
+            if (a === 1) {
+                console.log(i);
+            }
+        }
+    }
+
+    function displayTime(hour, min, sec) {
+        if (Number.isNaN(hour) && Number.isNaN(min) && Number.isNaN(sec)) {
+            if (hour <= 23 && min <= 59 && sec <= 59) {
+                document.write(`${hour} : ${min} : ${sec}`);
+            }
+        }
+        if (!Number.isNaN(hour) && min === undefined && sec === undefined) {
+            if (hour <= 23) {
+                document.write(`${hour}` + " :00 :00");
+            }
+        }
+        if (!Number.isNaN(hour) && !Number.isNaN(min) && sec === undefined) {
+            if (hour <= 23 && min <= 59) {
+                document.write(`${hour} : ${min}` + " :00");
+            }
+        }
+        if (!Number.isNaN(hour) && min === 0 && !Number.isNaN(sec)) {
+            if (hour <= 23 && min <= 59) {
+                document.write(`${hour}` + " :00 :" + `${sec}`);
+            }
+        }
+    }
+
+    function convertInToSeconds(hour, min, sec) {
+        let seconds = 0;
+        if (!Number.isNaN(hour) && !Number.isNaN(min) && !Number.isNaN(sec)) {
+            seconds = (hour * 3600) + (min * 60) + sec;
+            return seconds;
+        }
+    }
+
+
+    function convertSecondsToHours(seconds) {
+        let hours;
+        let min;
+        let sec;
+        hours = Math.floor(seconds / 3600);
+        min = Math.floor((seconds - (hours * 3600)) / 60);
+        sec = (seconds - (hours * 3600) - (min * 60));
+        document.write(`${hours} : ${min} : ${sec}`);
+    }
+
+    function timeBetweenDates(day1, months1, year1, day2, months2, year2) {
+        let montsDay1 = 0;
+        let montsDay2 = 0;
+        if (months1 === 2) {
+            montsDay1 = 31
+        }
+        if (months1 === 3) {
+            montsDay1 = 61
+        }
+        if (months1 === 4) {
+            montsDay1 = 92
+        }
+        if (months1 === 5) {
+            montsDay1 = 122
+        }
+        if (months1 === 6) {
+            montsDay1 = 153
+        }
+        if (months1 === 7) {
+            montsDay1 = 183
+        }
+        if (months1 === 8) {
+            montsDay1 = 214
+        }
+        if (months1 === 9) {
+            montsDay1 = 245
+        }
+        if (months1 === 10) {
+            montsDay1 = 275
+        }
+        if (months1 === 11) {
+            montsDay1 = 306
+        }
+        if (months1 === 12) {
+            montsDay1 = 336
+        }
+        if (months2 === 2) {
+            montsDay2 = 31
+        }
+        if (months2 === 3) {
+            montsDay2 = 61
+        }
+        if (months2 === 4) {
+            montsDay2 = 92
+        }
+        if (months2 === 5) {
+            montsDay2 = 122
+        }
+        if (months2 === 6) {
+            montsDay2 = 153
+        }
+        if (months2 === 7) {
+            montsDay2 = 183
+        }
+        if (months2 === 8) {
+            montsDay2 = 214
+        }
+        if (months2 === 9) {
+            montsDay2 = 245
+        }
+        if (months2 === 10) {
+            montsDay2 = 275
+        }
+        if (months2 === 11) {
+            montsDay2 = 306
+        }
+        if (months2 === 12) {
+            montsDay2 = 336
+        }
+
+        let hours1 = (day1 * 24) + (montsDay1 * 24) + ((year1 * 365) * 24);
+        let hours2 = (day2 * 24) + (montsDay2 * 24) + ((year2 * 365) * 24);
+        let secDate1 = convertInToSeconds(hours1, 0, 0);
+        let secDate2 = convertInToSeconds(hours2, 0, 0);
+        let difference = secDate2 - secDate1;
+        convertSecondsToHours(difference);
+    }
+
+</script>
+
+</body>
+</html>
